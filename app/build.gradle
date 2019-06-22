@@ -1,24 +1,26 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.0"
+    compileSdkVersion 27
+    buildToolsVersion "27.+"
 
     defaultConfig {
         applicationId "io.github.tmatz.myapp"
-        minSdkVersion 14
-        targetSdkVersion 21
+        minSdkVersion 15
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    api ('android.arch.core:runtime:+') { force = true }
+    api 'com.android.support:appcompat-v7:27.+'
+    api fileTree(dir: 'libs', include: ['*.jar'])
 }
